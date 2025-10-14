@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import './cv-generator.css';
-import "react-quill/dist/quill.snow.css";
+
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
