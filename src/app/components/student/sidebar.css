@@ -1,0 +1,67 @@
+/* Styles spécifiques pour la sidebar étudiant */
+.sidebar .nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #007bff;
+}
+
+.sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar .sub-item.active {
+  color: #007bff !important;
+  font-weight: 600;
+}
+
+.sidebar .nav-section {
+  padding: 1rem 1.5rem 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+}
+
+.sidebar .nav-section:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+
+.sidebar .text-section {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0;
+}
+
+.badge {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Animation des menus */
+.nav-collapse {
+  transition: all 0.3s ease;
+
+  color: white !important;
+}
+
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+}
