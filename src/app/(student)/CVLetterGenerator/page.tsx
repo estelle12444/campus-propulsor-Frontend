@@ -2,17 +2,18 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import './cv-generator.css';
 
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
-// Import dynamique (ssr: false) => évite les erreurs d’hydratation
-const ReactQuill = dynamic(() => import("react-quill"), {
-    ssr: false,
-    loading: () => <p>Chargement de l’éditeur...</p>,
-});
+
+// // Import dynamique (ssr: false) => évite les erreurs d’hydratation
+// const ReactQuill = dynamic(() => import("react-quill"), {
+//     ssr: false,
+//     loading: () => <p>Chargement de l’éditeur...</p>,
+// });
 
 interface Formation {
     id: string;
