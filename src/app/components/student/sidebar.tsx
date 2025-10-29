@@ -12,7 +12,7 @@ export default function Sidebar() {
     return pathname === path || pathname.startsWith(path + '/');
   };
 
-  const [openMenus, setOpenMenus] = useState({});
+  const [openMenus, setOpenMenus] = useState<{[key: string]: boolean}>({});
 
   const isMenuOpen = (menuId: string) => {
     return openMenus[menuId] || false;
@@ -28,7 +28,7 @@ export default function Sidebar() {
   useEffect(() => {
     const initiallyOpenMenus: { [key: string]: boolean } = {};
     // Menu Admission
-    if (isActive('/dashboard/admission')) {
+    if (isActive('/admission')) {
       initiallyOpenMenus.admission = true;
     }
     // Menu Installation
@@ -47,14 +47,14 @@ export default function Sidebar() {
   }, [pathname]);
 
   return (
-    <div className="sidebar" data-background-color="dark">
+    <div className="sidebar" data-background-color="dark2">
       <div className="sidebar-logo">
         {/* Logo Header */}
-        <div className="logo-header" data-background-color="dark">
+        <div className="logo-header" data-background-color="dark2">
           <Link href="/dashboard" className="logo">
             <div className="navbar-brand text-white fw-bold">
               <i className="fas fa-graduation-cap me-2"></i>
-              Campus & Professional
+              Campus Propul'Sor
             </div>
           </Link>
           <div className="nav-toggle">
@@ -98,7 +98,6 @@ export default function Sidebar() {
             {/* Menu Admission */}
             <li className="nav-item">
               <a
-                data-bs-toggle="collapse"
                 href="#admission"
                 className={`nav-link ${isMenuOpen('admission') ? '' : 'collapsed'}`}
                 aria-expanded={isMenuOpen('admission')}
@@ -111,12 +110,12 @@ export default function Sidebar() {
                 <p>Admission Success</p>
                 <span className="caret" />
               </a>
-              <div className={`collapse ${isMenuOpen('admission') ? 'show' : ''}`} id="admission">
+              <div className={`submenu ${isMenuOpen('admission') ? 'submenu-open' : 'submenu-closed'}`}>
                 <ul className="nav nav-collapse">
                   <li>
                     <Link
-                      href="/dashboard/admission"
-                      className={`nav-link ${isActive('/dashboard/admission') ? 'active' : ''}`}
+                      href="/admission"
+                      className={`nav-link ${isActive('/admission') ? 'active' : ''}`}
                     >
                       <span className="sub-item">Évaluation des Chances</span>
                     </Link>
@@ -152,7 +151,6 @@ export default function Sidebar() {
             {/* Menu Installation */}
             <li className="nav-item">
               <a
-                data-bs-toggle="collapse"
                 href="#installation"
                 className={`nav-link ${isMenuOpen('installation') ? '' : 'collapsed'}`}
                 aria-expanded={isMenuOpen('installation')}
@@ -165,7 +163,7 @@ export default function Sidebar() {
                 <p>First Job Propul'Sor</p>
                 <span className="caret" />
               </a>
-              <div className={`collapse ${isMenuOpen('installation') ? 'show' : ''}`} id="installation">
+              <div className={`submenu ${isMenuOpen('installation') ? 'submenu-open' : 'submenu-closed'}`}>
                 <ul className="nav nav-collapse">
                   <li>
                     <Link
@@ -198,7 +196,6 @@ export default function Sidebar() {
             {/* Menu Carrière */}
             <li className="nav-item">
               <a
-                data-bs-toggle="collapse"
                 href="#carriere"
                 className={`nav-link ${isMenuOpen('carriere') ? '' : 'collapsed'}`}
                 aria-expanded={isMenuOpen('carriere')}
@@ -211,7 +208,7 @@ export default function Sidebar() {
                 <p>Enterprise Integration</p>
                 <span className="caret" />
               </a>
-              <div className={`collapse ${isMenuOpen('carriere') ? 'show' : ''}`} id="carriere">
+              <div className={`submenu ${isMenuOpen('carriere') ? 'submenu-open' : 'submenu-closed'}`}>
                 <ul className="nav nav-collapse">
                   <li>
                     <Link
@@ -289,7 +286,6 @@ export default function Sidebar() {
             {/* Menu Compte */}
             <li className="nav-item">
               <a
-                data-bs-toggle="collapse"
                 href="#compte"
                 className={`nav-link ${isMenuOpen('compte') ? '' : 'collapsed'}`}
                 aria-expanded={isMenuOpen('compte')}
@@ -302,7 +298,7 @@ export default function Sidebar() {
                 <p>Mon Profil</p>
                 <span className="caret" />
               </a>
-              <div className={`collapse ${isMenuOpen('compte') ? 'show' : ''}`} id="compte">
+              <div className={`submenu ${isMenuOpen('compte') ? 'submenu-open' : 'submenu-closed'}`}>
                 <ul className="nav nav-collapse">
                   <li>
                     <Link

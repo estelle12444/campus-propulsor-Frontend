@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useSearchParams } from 'next/navigation';
+import { useAuth } from '@/app/context/AuthContext';
 
 export default function StudentDashboard() {
+  const { user } = useAuth();
   const [progressData, setProgressData] = useState({
     admission: 25,
     installation: 10,
@@ -54,18 +57,44 @@ export default function StudentDashboard() {
     return () => clearInterval(interval);
   }, []);
 
+
+    const searchParams = useSearchParams();
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get('login') === 'success') {
+      setShowWelcome(true);
+
+      // Supprimer le message après 5 secondes
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+        // Nettoyer l'URL
+        const url = new URL(window.location.href);
+        url.searchParams.delete('login');
+        window.history.replaceState({}, document.title, url.toString());
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
+
   return (
     <div className="container">
       <div className="page-inner">
+         {showWelcome && (
+        <div className="mb-6 p-4 rounded-lg bg-green-100 text-green-800 border border-green-200 shadow">
+          ✅ Connexion réussie ! Bienvenue sur Campus Propulsor.
+        </div>
+      )}
         {/* Header avec actions */}
         <div className="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
           <div>
-            <h3 className="fw-bold mb-2">Bonjour, pascale 👋</h3>
+            <h3 className="fw-bold mb-2">Bonjour, {user?.last_name || 'utilisateur'} {user?.first_name || 'utilisateur'} </h3>
             <h6 className="op-7 mb-2">Bienvenue sur votre tableau de bord Campus Propul'Sor</h6>
             <p className="text-muted">Votre progression globale : <strong>{progressData.overall}%</strong></p>
           </div>
           <div className="ms-md-auto py-2 py-md-0">
-            <Link href="/admission" className="btn btn-label-info btn-round me-2">
+            <Link href="/AssistantCampusFrance" className="btn btn-label-info btn-round me-2">
               <i className="fas fa-rocket me-2"></i>
               Continuer mon parcours
             </Link>
@@ -74,6 +103,7 @@ export default function StudentDashboard() {
               Guides & Ressources
             </Link>
           </div>
+          
         </div>
 
         {/* Cartes de statistiques */}

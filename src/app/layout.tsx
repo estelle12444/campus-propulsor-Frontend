@@ -1,7 +1,12 @@
+
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./globals.css";
+
 import Script from "next/script";
+import { ModalProvider } from "./context/ModalContext";
+import ModalContainer from "./components/marketing/ModalContainer";
+import { AuthProvider } from "./context/AuthContext";
 
 
 // import "./main.js";
@@ -31,6 +36,8 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+
+      
         {/* Autres balises meta ou Link ici */}
 
         <link
@@ -66,8 +73,16 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+         <AuthProvider>
+        <ModalProvider>
+          {children}
+           <ModalContainer />
+        </ModalProvider>
+        </AuthProvider>
+
       </body>
     </html>
   );
 }
+
+

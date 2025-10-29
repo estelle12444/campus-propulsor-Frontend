@@ -1,67 +1,60 @@
-/* Styles spécifiques pour la sidebar étudiant */
-.sidebar .nav-link.active {
-  background: rgba(255, 255, 255, 0.1);
-  border-left: 3px solid #007bff;
+/* Styles pour les sous-menus */
+.submenu {
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.sidebar .nav-link:hover {
-  background: rgba(255, 255, 255, 0.05);
+.submenu-open {
+  max-height: 500px;
+  opacity: 1;
 }
 
-.sidebar .sub-item.active {
-  color: #007bff !important;
+.submenu-closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Style pour le caret qui tourne */
+.nav-link .caret {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.nav-link:not(.collapsed) .caret {
+  transform: rotate(90deg);
+}
+
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Couleurs pour les états actifs */
+.nav-link.active {
+  background-color: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b !important;
+  border-left: 3px solid #ff6b6b;
+}
+
+.nav-link.active-parent {
+  background-color: rgba(255, 107, 107, 0.05);
+  color: #ff6b6b !important;
   font-weight: 600;
 }
 
-.sidebar .nav-section {
-  padding: 1rem 1.5rem 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 1rem;
+.nav-link.active .fas,
+.nav-link.active-parent .fas {
+  color: #ff6b6b;
 }
 
-.sidebar .nav-section:first-child {
-  border-top: none;
-  margin-top: 0;
-}
-
-.sidebar .text-section {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0;
-}
-
-.badge {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-}
-
-/* Animation des menus */
-.nav-collapse {
-  transition: all 0.3s ease;
-
-  color: white !important;
-}
-
-.collapse:not(.show) {
-  display: none;
-}
-
-.collapsing {
-  height: 0;
-  overflow: hidden;
-  transition: height 0.35s ease;
-}
-
-/* Responsive */
-@media (max-width: 991.98px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .sidebar.mobile-open {
-    transform: translateX(0);
-  }
+/* Style pour les sous-items actifs */
+.nav-collapse .nav-link.active {
+  background-color: rgba(255, 107, 107, 0.08);
+  border-left: 2px solid #ff6b6b;
+  color: #ff6b6b;
 }

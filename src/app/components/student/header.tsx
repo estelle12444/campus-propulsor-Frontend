@@ -1,10 +1,15 @@
+
+"use client";
+import { useAuth } from "@/app/context/AuthContext";
 export default function Header() {
+      const { user } = useAuth();
+
     return (
         <>
             <div className="main-header">
                 <div className="main-header-logo">
                     {/* Logo Header */}
-                    <div className="logo-header" data-background-color="dark">
+                    <div className="logo-header" data-background-color="light-blue">
                         <a href="HomeStudent" className="logo">
                             <img
                                 src="./assets/student/img/kaiadmin/logo_light.svg"
@@ -28,7 +33,7 @@ export default function Header() {
                     {/* End Logo Header */}
                 </div>
                 {/* Navbar Header */}
-                <nav className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                <nav className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom" data-background-color="light-blue">
                     <div className="container-fluid">
                         <nav className="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
                             <div className="input-group">
@@ -39,7 +44,7 @@ export default function Header() {
                                 </div>
                                 <input
                                     type="text"
-                                    placeholder="Search ..."
+                                    placeholder="Rechercher ..."
                                     className="form-control"
                                 />
                             </div>
@@ -303,8 +308,8 @@ export default function Header() {
                                         />
                                     </div>
                                     <span className="profile-username">
-                                        <span className="op-7">Hello,</span>
-                                        <span className="fw-bold">Pascale</span>
+                                        <span className="op-7">Bonjour, </span>
+                                        <span className="fw-bold">{user?.last_name} {user?.first_name} </span>
                                     </span>
                                 </a>
                                 <ul className="dropdown-menu dropdown-user animated fadeIn">

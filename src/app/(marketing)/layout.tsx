@@ -18,11 +18,8 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html>
       <head>
-        {/* Autres balises meta ou Link ici */}
-
-
         {/* <!-- Favicons --> */}
         <link href="./assets/marketing/marketing/img/favicon.png" rel="icon" />
         <link href="./assets/marketing/marketing/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -46,7 +43,6 @@ export default function MarketingLayout({
 
       <body className="index-page" >
         <Header />
-
        
           {children}
        
